@@ -19,7 +19,8 @@ func NewProfilerHandler() *ProfilerHandler {
 	h.Route = http.NewServeMux()
 
 	h.Server = &http.Server{
-		Addr: "0.0.0.0:3030",
+		Addr:    "0.0.0.0:3030",
+		Handler: h.Route,
 	}
 	h.mapProfileHandlers()
 
