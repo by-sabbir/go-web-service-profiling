@@ -32,13 +32,14 @@ make trace
 
 this will record 5 seconds session for the web app.
 
-
 - To view the profile (cpu/memory)
+
 ```bash
 go tool pprof -http localhost:9999 prof.pb.gz
 ```
 
 - To view the traces
+
 ```bash
 go tool trace trace.out
 ```
