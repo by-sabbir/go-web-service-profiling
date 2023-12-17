@@ -10,18 +10,18 @@ import (
 // AppHandler declares the business service structure.
 type AppHandler struct {
 	Server *http.Server
-	Path   *http.ServeMux
+	Route  *http.ServeMux
 }
 
 // NewAppHandler initiates the AppHandler and Maps the internal routes.
 func NewAppHandler() *AppHandler {
 	h := &AppHandler{}
 
-	h.Path = http.NewServeMux()
+	h.Route = http.NewServeMux()
 
 	h.Server = &http.Server{
 		Addr:    "0.0.0.0:8080",
-		Handler: h.Path,
+		Handler: h.Route,
 	}
 
 	h.mapAppHandler()
@@ -30,7 +30,7 @@ func NewAppHandler() *AppHandler {
 }
 
 func (a *AppHandler) mapAppHandler() {
-	a.Path.HandleFunc("/fakework", fakeWork)
+	a.Route.HandleFunc("/fakework", fakeWork)
 }
 
 func fakeWork(w http.ResponseWriter, r *http.Request) {
